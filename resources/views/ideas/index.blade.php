@@ -13,4 +13,8 @@
     @else
         <p> No Ideas yet, <a href="ideas/create" class="underline">Create one</a></p>
     @endif
+
+    <p class="mt-6">
+        <a href="ideas/create" class="underline">Create one</a>
+    </p>
 </x-layout>
