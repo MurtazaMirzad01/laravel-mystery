@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IdeaRequest;
 use App\Models\Idea;
+//use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class IdeaController extends Controller
 {
@@ -26,6 +28,7 @@ class IdeaController extends Controller
     public function create()
     {
         //
+
         return view('ideas.create');
         return redirect('/ideas');
     }
@@ -48,10 +51,11 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
+        Gate::authorize('update', $idea);
+
         return view('ideas.show',[
             'idea' => $idea
         ]);
-
     }
 
     /**
@@ -59,6 +63,7 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
+        Gate::authorize('update', $idea);
         return view('ideas.edit',[
             'idea' => $idea
         ]);
@@ -80,6 +85,7 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
+        Gate::authorize('delete', $idea);
         $idea->delete();
         return redirect('/ideas');
     }

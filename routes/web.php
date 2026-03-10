@@ -40,8 +40,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionsController::class, 'store']);
 });
 
-Route::get('/admin', function () {
-    Gate::authorize('view-admin');
-    return "Admin Page";
-});
+//Route::get('/admin', function () {
+//    Gate::authorize('view-admin');
+//    return "Admin Page";
+//});
 
