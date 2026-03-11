@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Idea extends Model
 {
     //
+    protected $attributes = [
+        'state' => 'pending ',
+    ];
     protected $guarded = [];
 
     public function user(){
